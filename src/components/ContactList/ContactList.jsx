@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Titel, Button, List, Item } from './ContactList.styled';
+import { Button, List, Item } from './ContactList.styled';
 import { BsFillPersonFill, BsFillTrashFill } from 'react-icons/bs';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { contactsSelectors, contactsOperations } from 'redux/contacts/';
+import Spinner from 'components/Loader';
 
 export default function ContactList() {
   const contacts = useSelector(contactsSelectors.getFilteredContacts);
@@ -39,7 +40,7 @@ export default function ContactList() {
           </List>
         )
       ) : (
-        <h3>Loading...</h3>
+        <Spinner />
       )}
     </>
   );

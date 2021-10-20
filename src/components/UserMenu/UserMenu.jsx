@@ -1,8 +1,8 @@
-import { Button } from 'components/_share/Button.styled';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors, authOperations } from 'redux/auth';
 import { Container } from './UserMenu.styled';
+import { Button } from 'components/_share/Button.styled';
 
 export default function UserMenu() {
   const dispatch = useDispatch();

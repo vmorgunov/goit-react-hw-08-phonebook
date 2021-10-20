@@ -4,7 +4,6 @@ import shortid from 'shortid';
 import { Form, Label, Input } from './ContactForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
-import { Container } from './ContactForm.styled';
 import { Button } from 'components/_share/Button.styled';
 
 export default function ContactForm() {

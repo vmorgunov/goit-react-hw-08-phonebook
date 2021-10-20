@@ -1,14 +1,15 @@
 import { Switch } from 'react-router';
-import AppBar from 'components/AppBar/AppBar';
+import AppBar from 'components/AppBar/';
 import { authOperations, authSelectors } from 'redux/auth';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Container from 'components/Container/Container';
+import Container from 'components/Container/';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 import { Suspense, lazy } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Spinner from 'components/Loader/Loader';
 
 const HomeView = lazy(() =>
   import('./views/HomeView/HomeView' /* webpackChunkName: "home-page" */),
@@ -41,7 +42,7 @@ export default function App() {
         <>
           <Container>
             <AppBar />
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<Spinner />}>
               <Switch>
                 <PublicRoute exact path="/">
                   <HomeView />
@@ -58,7 +59,7 @@ export default function App() {
                 </PrivateRoute>
               </Switch>
             </Suspense>
-            <ToastContainer position="top-center" autoClose="2000" />
+            <ToastContainer position="top-center" autoClose="1500" />
           </Container>
         </>
       )}
