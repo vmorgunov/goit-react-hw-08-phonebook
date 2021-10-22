@@ -6,6 +6,9 @@ import { changeFilter } from './contacts-action';
 
 const initialState = [];
 
+const setError = (_, { payload }) => payload;
+const resetError = () => null;
+
 const items = createReducer(initialState, {
   [fetchContacts.fulfilled]: (_, { payload }) => payload,
   [addContact.fulfilled]: (state, { payload }) => [...state, payload],
@@ -30,12 +33,12 @@ const filter = createReducer('', {
 });
 
 const error = createReducer(null, {
-  [fetchContacts.rejected]: (_, { payload }) => payload,
-  [addContact.rejected]: (_, { payload }) => payload,
-  [deleteContact.rejected]: (_, { payload }) => payload,
-  [fetchContacts.pending]: () => null,
-  [addContact.pending]: () => null,
-  [deleteContact.pending]: () => null,
+  [fetchContacts.rejected]: setError,
+  [addContact.rejected]: setError,
+  [deleteContact.rejected]: setError,
+  [fetchContacts.pending]: resetError,
+  [addContact.pending]: resetError,
+  [deleteContact.pending]: resetError,
 });
 
 export default combineReducers({
