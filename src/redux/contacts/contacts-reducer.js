@@ -15,7 +15,7 @@ const items = createReducer(initialState, {
   [addContact.fulfilled]: (state, { payload }) => [...state, payload],
   [deleteContact.fulfilled]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
-  [logOutg.fulfilled]: state => (state = []),
+  [logOut.fulfilled]: state => (state = []),
 });
 
 const isLoading = createReducer(false, {
