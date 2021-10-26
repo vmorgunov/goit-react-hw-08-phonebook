@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 // import * as contactsAction from './contacts-action';
 import { fetchContacts, addContact, deleteContact } from './contacts-operation';
 import { changeFilter } from './contacts-action';
+import { logOut } from 'redux/auth/auth-operations';
 
 const initialState = [];
 
@@ -14,6 +15,7 @@ const items = createReducer(initialState, {
   [addContact.fulfilled]: (state, { payload }) => [...state, payload],
   [deleteContact.fulfilled]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
+  [logOutg.fulfilled]: state => (state = []),
 });
 
 const isLoading = createReducer(false, {
